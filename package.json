@@ -1,0 +1,20 @@
+{
+  "name": "auto_torrent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "dependencies": {
+    "craftyjs": "^0.7.0",
+    "node": "^0.0.0",
+    "node-png": "^0.4.3",
+    "request": "^2.69.0",
+    "require": "^2.4.20",
+    "requirejs": "^2.1.22"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Greg Prouty",
+  "license": "ISC"
+}
