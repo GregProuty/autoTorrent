@@ -1,1 +1,1 @@
-web: node node.js -p $PORT
+web: PORT=$PORT node node.js
