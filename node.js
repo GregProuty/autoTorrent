@@ -64,7 +64,7 @@ app.get('/add_to_put', function(req, res) {
 app.get('/put_oauth', function(req, res) {
     var request = require('request');
     var put_options = {
-        uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http//:autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
+        uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
         method: "GET",
         timeout: 5000
     };
