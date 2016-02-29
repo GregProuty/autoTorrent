@@ -1,19 +1,36 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var request = require('request');
+var fs = require('fs');
+var cookieSession = require('cookie-session')
+
 
 app.set('port', process.env.PORT || 3000);
 
+//app.set('trust proxy', 1) //trust first proxy
+
 app.use(express.static('public'))
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}))
+
+app.use(function (req, res, next) {
+  // Update views
+  req.session.token = JSON.parse(body).access_token;
+
+  // Write response
+  res.redirect('/');
+})
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.get('/add_to_put', function(req, res) {
-    var request = require('request');
-      var fs = require('fs');
-      
       var torrent_options = {
         uri: req.query.q,
         method: 'GET'
@@ -39,7 +56,7 @@ app.get('/add_to_put', function(req, res) {
                         console.log(body)
                         var parsed_event = JSON.parse(body).events[0];
                         console.log(parsed_event.transfer_name)
-                        if (title === parsed_event.transfer_name) {
+ 
                             res.redirect('http://put.io/file/' +  parsed_event.file_id)
                         } else {
                             res.redirect('http://put.io/transfers')
@@ -62,22 +79,23 @@ app.get('/add_to_put', function(req, res) {
 });
 
 app.get('/put_oauth', function(req, res) {
-    var request = require('request');
-    var put_options = {
-        uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
-        method: "GET",
-        timeout: 5000
+     var put_options = {
+         uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
+         method: "GET",
+         timeout: 5000
     };
     
     var parsed_body = null;
   request(put_options, function (error, response, body) {
     if (!error) {
-        var fs = require('fs');
+
         console.log(body)
-        fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
-            if (err) return console.log(err);
-            res.redirect('/')
-        });
+        // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
+        //     if (err) return console.log(err);
+        //     res.redirect('/')
+        // });
+        
+        
     } else {
       res.send(error + "TEST");
     }
