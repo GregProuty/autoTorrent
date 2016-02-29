@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
   req.session.token = JSON.parse(body).access_token;
 
   // Write response
-  res.redirect('/');
+  res.redirect('/autotorrent.herokuapp.com');
 })
 
 
