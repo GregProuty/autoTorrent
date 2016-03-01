@@ -7,7 +7,7 @@
 //   returnTorrents();
 // });
 
-document.getElementById('text').onkeydown = function(event) {
+document.onkeydown = function(event) {
     if (event.keyCode == 13) {
         returnTorrents();
     }
