@@ -1,11 +1,7 @@
-// document.getElementById("loginButton").onclick = function () { 
-//     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
-// }
-
+//login button redirect
 document.getElementById("loginButton").onclick = function () { 
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
-
 
 function listTorrents() { 
   params = "q=" + document.getElementById("filename").value;
@@ -22,7 +18,6 @@ function listTorrents() {
             i--;
           }
         }
-        
         return this;
       };
             
