@@ -38,7 +38,7 @@ document.getElementById("clickMe").onclick = function () {
   xmlhttp.send(null); 
 }
 
-document.getElementById("clickMe").addEventListener("keydown", function (e) {
+document.getElementById("text").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
         alert('you pressed enter!');
     }
