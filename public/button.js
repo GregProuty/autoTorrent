@@ -6,13 +6,6 @@ document.getElementById("loginButton").onclick = function () {
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
 
-var text = document.getElementById("clickMe");
-text.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-        document.getElementById("clickMe").onclick();
-    }
-});
-
 document.getElementById("clickMe").onclick = function () { 
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
