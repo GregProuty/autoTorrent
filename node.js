@@ -76,6 +76,7 @@ app.get('/add_to_put', function(req, res) {
           res.send (error + "error")
         }
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
+});
 
 
 app.get('/put_oauth', function(req, res) {
@@ -138,6 +139,4 @@ app.post('/add_file', function (req, res) {
 app.listen(app.get('port'),
   function(){
     console.log("Express server listening on port " + app.get('port'));
-});
-
 });
