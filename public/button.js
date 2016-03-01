@@ -39,7 +39,8 @@ function listTorrents() {
   xmlhttp.send(null); 
 }
 
-document.getElementById("clickMe").onclick = function(){
+document.getElementById("clickMe").onclick = function(e){
+    e.preventDefault();
     listTorrents();
 }
 
