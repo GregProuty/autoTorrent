@@ -38,7 +38,7 @@ app.get('/add_to_put', function(req, res) {
       request(torrent_options, function(error, response, body) {
         if (!error) {
           fs = require('fs')
-          var oauth_key = fs.readFileSync('key.txt','utf8')
+          var oauth_key = req.session.token;
           var put_options = {
             url: 'https://upload.put.io/v2/files/upload?oauth_token=' + oauth_key,
             method: 'POST',
