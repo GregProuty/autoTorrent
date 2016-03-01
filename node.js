@@ -56,7 +56,7 @@ app.get('/add_to_put', function(req, res) {
                         console.log(body)
                         var parsed_event = JSON.parse(body).events[0];
                         console.log(parsed_event.transfer_name)
- 
+                        if (title === parsed_event.transfer_name) {
                             res.redirect('http://put.io/file/' +  parsed_event.file_id)
                         } else {
                             res.redirect('http://put.io/transfers')
@@ -73,10 +73,10 @@ app.get('/add_to_put', function(req, res) {
            var form = r.form();
            form.append('file', fs.createReadStream("temp_torrent.torrent"));
         } else {
-          res.send(error + "error")
+          res.send (error + "error")
         }
-      }).pipe(fs.createWriteStream('temp_torrent.torrent'));
-});
+}).pipe(fs.createWriteStream('temp_torrent.torrent'));
+
 
 // app.get('/put_oauth', function(req, res) {
 //      var put_options = {
@@ -140,3 +140,4 @@ app.listen(app.get('port'),
     console.log("Express server listening on port " + app.get('port'));
 });
 
+});
