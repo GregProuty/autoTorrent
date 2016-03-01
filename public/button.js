@@ -38,3 +38,7 @@ document.getElementById("clickMe").onclick = function () {
   xmlhttp.send(null); 
 }
     
+element.addEventListener('keydown', function (e) {
+  var isEnter = e.keyCode === 13;
+  var searchValue = e.target.value;
+});
