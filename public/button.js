@@ -39,7 +39,7 @@ function listTorrents() {
   xmlhttp.send(null); 
 }
 
-document.getElementById("clickMe").onclick = listTorrents()
+document.getElementById("clickMe").onclick = listTorrents();
 
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
