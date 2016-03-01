@@ -37,3 +37,10 @@ document.getElementById("clickMe").onclick = function () {
   xmlhttp.open("POST", "/add_file?" + params, true);
   xmlhttp.send(null); 
 }
+
+document.getElementById("clickMe").addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+        alert('you pressed enter!');
+    }
+});
+
