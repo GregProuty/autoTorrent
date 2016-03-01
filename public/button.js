@@ -40,7 +40,7 @@ document.getElementById("clickMe").onclick = function () {
 
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-        document.getElementById("clickMe").click();
+        document.getElementById("clickMe").onclick();
     }
 });
 
