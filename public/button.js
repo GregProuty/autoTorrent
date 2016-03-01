@@ -6,10 +6,7 @@ document.getElementById("loginButton").onclick = function () {
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
 
-document.getElementById("clickMe").onclick = printTorrents();
-
-
-function printTorrents() { 
+document.getElementById("clickMe").onclick = function () { 
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
@@ -43,7 +40,7 @@ function printTorrents() {
 
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-        printTorrents();
+        alert('you pressed enter!')
     }
 });
 
