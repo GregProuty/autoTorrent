@@ -40,6 +40,7 @@ document.getElementById("clickMe").onclick = function () {
 
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+        window.location = 'autotorrent.herokuapp.com';
         document.getElementById("clickMe").onclick();
     }
 });
