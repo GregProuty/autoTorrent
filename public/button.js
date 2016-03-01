@@ -4,8 +4,7 @@
 
 document.addEventListener('keydown', function (e) {
   var isEnter = e.keyCode === 13;
-  var searchValue = returnTorrents();
-
+  if(isEnter) returnTorrents();
 });
 
 document.getElementById("loginButton").onclick = function () { 
