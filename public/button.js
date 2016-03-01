@@ -2,16 +2,10 @@
 //     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 // }
 
-// document.addEventListener('keydown', function (e) {
-//   var isEnter = e.keyCode === 13;
-//   returnTorrents();
-// });
-
-document.onkeydown = function(event) {
-    if (event.keyCode == 13) {
-        returnTorrents();
-    }
-}
+document.addEventListener('keydown', function (e) {
+  var isEnter = e.keyCode === 13;
+  if (isEnter === true) returnTorrents();
+});
 
 document.getElementById("loginButton").onclick = function () { 
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
