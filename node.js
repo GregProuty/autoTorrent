@@ -94,7 +94,7 @@ app.get('/put_oauth', function(req, res) {
         
         req.session.token = JSON.parse(body).access_token;
         
-        res.redirect('/autotorrent.herokuapp.com');
+        res.redirect('/');
         // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
         //     if (err) return console.log(err);
         //     res.redirect('/')
