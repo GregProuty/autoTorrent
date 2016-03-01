@@ -12,10 +12,10 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.static('public'))
 
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['key1']
-// }))
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}))
 
 // app.use(function (req, res, next) {
 //   // Update views
@@ -91,10 +91,14 @@ app.get('/put_oauth', function(req, res) {
     if (!error) {
 
         console.log(body)
-        fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
-            if (err) return console.log(err);
-            res.redirect('/')
-        });
+        
+        req.session.token = JSON.parse(body).access_token;
+        
+        res.redirect('/autotorrent.herokuapp.com');
+        // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
+        //     if (err) return console.log(err);
+        //     res.redirect('/')
+        // });
         
         
     } else {
