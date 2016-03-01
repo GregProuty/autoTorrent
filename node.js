@@ -12,18 +12,18 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.static('public'))
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1']
-}))
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['key1']
+// }))
 
-app.use(function (req, res, next) {
-  // Update views
-  req.session.token = JSON.parse(body).access_token;
+// app.use(function (req, res, next) {
+//   // Update views
+//   req.session.token = JSON.parse(body).access_token;
 
-  // Write response
-  res.redirect('/autotorrent.herokuapp.com');
-})
+//   // Write response
+//   res.redirect('/autotorrent.herokuapp.com');
+// })
 
 
 app.get('/', function (req, res) {
@@ -79,29 +79,29 @@ app.get('/add_to_put', function(req, res) {
 });
 
 
-// app.get('/put_oauth', function(req, res) {
-//      var put_options = {
-//          uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
-//          method: "GET",
-//          timeout: 5000
-//     };
+app.get('/put_oauth', function(req, res) {
+     var put_options = {
+         uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
+         method: "GET",
+         timeout: 5000
+    };
     
-//     var parsed_body = null;
-//   request(put_options, function (error, response, body) {
-//     if (!error) {
+    var parsed_body = null;
+  request(put_options, function (error, response, body) {
+    if (!error) {
 
-//         console.log(body)
-//         // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
-//         //     if (err) return console.log(err);
-//         //     res.redirect('/')
-//         // });
+        console.log(body)
+        fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
+            if (err) return console.log(err);
+            res.redirect('/')
+        });
         
         
-//     } else {
-//       res.send(error + "TEST");
-//     }
-//   }); 
-// });
+    } else {
+      res.send(error + "TEST");
+    }
+  }); 
+});
 
 app.post('/add_file', function (req, res) {
   var request = require('request');
