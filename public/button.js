@@ -6,7 +6,8 @@ document.getElementById("loginButton").onclick = function () {
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
 
-document.getElementById("clickMe").onclick = function () { 
+
+function listTorrents() { 
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
@@ -38,10 +39,12 @@ document.getElementById("clickMe").onclick = function () {
   xmlhttp.send(null); 
 }
 
+document.getElementById("clickMe").onclick = listTorrents()
+
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
         e.preventDefault();
-        document.getElementById("clickMe").onclick();
+        listTorrents();
     }
 });
 
