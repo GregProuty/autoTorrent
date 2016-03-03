@@ -112,7 +112,7 @@ app.post('/add_file', function (req, res) {
   var kickass_options = {
     url: "https://kat.cr/json.php?q=" + encodeURIComponent(req.query.q) + "&field=seeders&order=asc",
     method: "GET",
-    timeout: 5000
+    // timeout: 5000
   };
 
   var torrentLink;
