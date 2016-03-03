@@ -5,7 +5,10 @@ var request = require('request');
 var fs = require('fs');
 var cookieSession = require('cookie-session')
 
+
 app.set('port', process.env.PORT || 3000);
+
+//app.set('trust proxy', 1) //trust first proxy
 
 app.use(express.static('public'))
 
@@ -13,6 +16,15 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1']
 }))
+
+// app.use(function (req, res, next) {
+//   // Update views
+//   req.session.token = JSON.parse(body).access_token;
+
+//   // Write response
+//   res.redirect('/autotorrent.herokuapp.com');
+// })
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
@@ -73,14 +85,22 @@ app.get('/put_oauth', function(req, res) {
          method: "GET",
          timeout: 5000
     };
-    var parsed_body = null;
     
+    var parsed_body = null;
   request(put_options, function (error, response, body) {
     if (!error) {
-        console.log(body)
-        req.session.token = JSON.parse(body).access_token;
-        res.redirect('/');
 
+        console.log(body)
+        
+        req.session.token = JSON.parse(body).access_token;
+        
+        res.redirect('/');
+        // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
+        //     if (err) return console.log(err);
+        //     res.redirect('/')
+        // });
+        
+        
     } else {
       res.send(error + "TEST");
     }
@@ -103,6 +123,9 @@ app.post('/add_file', function (req, res) {
             console.log(currentValue);  
             
             return currentValue;
+            //   currentValue.title.forEach(function(el){
+            //       str += el;
+            //   });
           }
       }));
     } else {
@@ -110,6 +133,12 @@ app.post('/add_file', function (req, res) {
     }
   });
 });
+
+// app.listen(process.env.PORT || 3000, function(){
+//   console.log('listening on', http.address().port);
+// });
+
+
 
 app.listen(app.get('port'),
   function(){
