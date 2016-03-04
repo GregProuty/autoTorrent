@@ -56,11 +56,11 @@ app.get('/add_to_put', function(req, res) {
                         console.log(body)
                         var parsed_event = JSON.parse(body).events[0];
                         console.log(parsed_event.transfer_name)
-                        // if (title === parsed_event.transfer_name) {
-                        //     res.redirect('http://put.io/file/' +  parsed_event.file_id)
-                        // } else {
+                        if (title === parsed_event.transfer_name) {
+                            res.redirect('http://put.io/file/' +  parsed_event.file_id)
+                        } else {
                             res.redirect('http://put.io/transfers')
-                        // }
+                        }
                     } else {
                         res.send(error)
                     }
@@ -89,18 +89,13 @@ app.get('/put_oauth', function(req, res) {
     var parsed_body = null;
   request(put_options, function (error, response, body) {
     if (!error) {
-
         console.log(body)
-        
         req.session.token = JSON.parse(body).access_token;
-        
         res.redirect('/');
         // fs.writeFile('key.txt', JSON.parse(body).access_token, function (err) {
         //     if (err) return console.log(err);
         //     res.redirect('/')
         // });
-        
-        
     } else {
       res.send(error + "TEST");
     }
@@ -137,8 +132,6 @@ app.post('/add_file', function (req, res) {
 // app.listen(process.env.PORT || 3000, function(){
 //   console.log('listening on', http.address().port);
 // });
-
-
 
 app.listen(app.get('port'),
   function(){
