@@ -56,11 +56,11 @@ app.get('/add_to_put', function(req, res) {
                         console.log(body)
                         var parsed_event = JSON.parse(body).events[0];
                         console.log(parsed_event.transfer_name)
-                        if (title === parsed_event.transfer_name) {
-                            res.redirect('http://put.io/file/' +  parsed_event.file_id)
-                        } else {
+                        // if (title === parsed_event.transfer_name) {
+                        //     res.redirect('http://put.io/file/' +  parsed_event.file_id)
+                        // } else {
                             res.redirect('http://put.io/transfers')
-                        }
+                        // }
                     } else {
                         res.send(error)
                     }
