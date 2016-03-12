@@ -2,7 +2,6 @@ document.getElementById("loginButton").onclick = function () {
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
 
-
 function listTorrents() { 
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
@@ -18,13 +17,12 @@ function listTorrents() {
             i--;
           }
         }
-        
         return this;
       };
             
       JSON.parse(xmlhttp.responseText).clean(null).forEach(function(el){
         console.log('building');
-        str += '<li><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></li>';
+            str += '<li><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></li>';
       })
       str += '</ul>'; 
       console.log(str);
