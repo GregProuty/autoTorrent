@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-//
+//using put.io api to add files
 app.get('/add_to_put', function(req, res) {
       var torrent_options = {
         uri: req.query.q,
@@ -66,7 +66,7 @@ app.get('/add_to_put', function(req, res) {
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
 });
 
-
+//put.io api for authentication
 app.get('/put_oauth', function(req, res) {
     var put_options = {
          uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
@@ -86,6 +86,7 @@ app.get('/put_oauth', function(req, res) {
     }); 
 });
 
+//kat.cr api for listing torrents
 app.post('/add_file', function (req, res) {
   var request = require('request');
   var kickass_options = {
@@ -100,7 +101,6 @@ app.post('/add_file', function (req, res) {
       res.send(JSON.parse(body).list.map(function(currentValue,index,array){
           if(index < 10){
             console.log(currentValue);  
-            
             return currentValue;
           }
       }));

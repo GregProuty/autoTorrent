@@ -4,7 +4,7 @@ document.getElementById("loginButton").onclick = function () {
     window.location = ('https://api.put.io/v2/oauth2/authenticate?client_id=2332&response_type=code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth');
 }
 
-//lists the ten torrent links on the page
+//lists ten torrent links on the page
 function listTorrents() { 
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
