@@ -1,5 +1,4 @@
-/* In order for the app to do what I wanted I had to set up an express server
-This is also the reason that it is hosted on heroku instead of github pages */
+// In order for the app to do what I wanted I had to set up an express server
 
 var express = require('express');
 var app = express();
