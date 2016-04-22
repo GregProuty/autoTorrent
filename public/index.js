@@ -10,6 +10,7 @@ function listTorrents() {
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      console.log('success');
       var str = '<ul>';
             
       Array.prototype.clean = function(deleteValue) {
@@ -23,9 +24,11 @@ function listTorrents() {
       };
             
       JSON.parse(xmlhttp.responseText).clean(null).forEach(function(el){
+        console.log('building');
             str += '<li><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></li>';
       })
       str += '</ul>'; 
+      console.log(str);
       document.getElementById("links").innerHTML = str;       
     }
   }; 
