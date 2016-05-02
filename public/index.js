@@ -41,9 +41,9 @@ function listTorrents() {
 //"SEARCH" button behavior, calls listTorrents()
 document.getElementById("clickMe").onclick = function(){
     if(loggedIn === false){
-        alert("Please log in first")
+        alert("Please log in")
     } else {
-            listTorrents();
+        listTorrents();
     }
 }
 
