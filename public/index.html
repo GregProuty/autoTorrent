@@ -204,17 +204,32 @@ nav > ul > li:hover {
  #links ul li {
      list-style-type: none;
  }
- li {
-    display: inline;
- }
- a {
-    display: block;
-    padding: 8px;
-    background-color: #dddddd;
- }
- ul {
-    background-color: #dddddd;
- }
+#nav {
+	width: 100%;
+	float: left;
+	margin: 0 0 1em 0;
+	padding: 0;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ccc;  }
+#nav ul {
+	list-style: none;
+	width: 800px;
+	margin: 0 auto;
+	padding: 0; }
+#nav li {
+	float: left; }
+#nav li a {
+	display: block;
+	padding: 8px 15px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #069;
+	border-right: 1px solid #ccc; }
+#nav li:first-child a {
+	border-left: 1px solid #ccc; }
+#nav li a:hover {
+	color: #c00;
+	background-color: #fff; }
  #loginButton {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -242,7 +257,7 @@ nav > ul > li:hover {
 <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/interface-4/96/Link-512.png">
 </head>
 
-<body<div id="header">
+<body<div id="nav">
     <ul>
         <li><input id="loginButton" type="button" value="login"/></li>
     </ul>    
