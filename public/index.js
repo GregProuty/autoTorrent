@@ -26,7 +26,7 @@ function listTorrents() {
             
       JSON.parse(xmlhttp.responseText).clean(null).forEach(function(el){
         console.log('building');
-            str += '<p><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></p><br>';
+            str += '<p><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></p>';
       })
       str += '</ul>'; 
       console.log(str);
