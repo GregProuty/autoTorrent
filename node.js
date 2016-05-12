@@ -97,7 +97,7 @@ app.post('/add_file', function (req, res) {
   request(kickass_options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send(JSON.parse(body).list.map(function(currentValue,index,array){
-          if(index < 10){
+          if(index < 8){
             console.log(currentValue);  
             return currentValue;
           }
