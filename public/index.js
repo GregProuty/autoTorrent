@@ -12,7 +12,7 @@ function listTorrents() {
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       console.log('success');
-      var str = '<ul>';
+      var str = '<ol>';
             
       Array.prototype.clean = function(deleteValue) {
         for (var i = 0; i < this.length; i++) {
@@ -28,7 +28,7 @@ function listTorrents() {
         console.log('building');
             str += '<li><a href="http://autotorrent.herokuapp.com/add_to_put?q=' + el.torrentLink + '"> Title: ' + el.title + ' Seeds: ' + el.seeds + '</a></li>';
       })
-      str += '</ul>'; 
+      str += '</ol>'; 
       console.log(str);
       document.getElementById("links").innerHTML = str;       
     }
