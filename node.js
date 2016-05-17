@@ -6,8 +6,9 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var cookieSession = require('cookie-session')
+var listTorrents = require('./listTorrents');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000)
 
 app.use(express.static('public'))
 
@@ -67,8 +68,12 @@ app.get('/add_to_put', function(req, res) {
 
 //put.io api for authentication
 app.get('/put_oauth', function(req, res) {
+  var redirectUri = "http://autotorrent.herokuapp.com";
+  if(process.env.DEVELOPMENT){
+    redirectUri = "http://localhost:3000";
+  }
     var put_options = {
-         uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=http://autotorrent.herokuapp.com/put_oauth&code=" + encodeURIComponent(req.query.code),
+         uri: "https://api.put.io/v2/oauth2/access_token?client_id=2332&client_secret=mr5bvnvcql9c5h0iv774&grant_type=authorization_code&redirect_uri=" + redirectUri + "/put_oauth&code=" + encodeURIComponent(req.query.code),
          method: "GET",
     };
     var parsed_body = null;
@@ -86,24 +91,11 @@ app.get('/put_oauth', function(req, res) {
 
 //kat.cr api for listing torrents
 app.post('/add_file', function (req, res) {
-  var request = require('request');
-  var kickass_options = {
-    url: "https://kat.cr/json.php?q=" + encodeURIComponent(req.query.q) + "&field=seeders&order=asc",
-    method: "GET",
-    // timeout: 5000
-  };
-  var torrentLink;
-  
-  request(kickass_options, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.send(JSON.parse(body).list.map(function(currentValue,index,array){
-          if(index < 7){
-            console.log(currentValue);  
-            return currentValue;
-          }
-      }));
+  listTorrents(req.query.q, function (err, torrents) {
+    if (err) {
+      res.send(err);
     } else {
-      res.send(error)
+      res.send(torrents);
     }
   });
 });
