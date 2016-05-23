@@ -86,4 +86,5 @@ function protectedDisplay(){
     e.preventDefault();
     listTorrents();
   }
+  
 }
