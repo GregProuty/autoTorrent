@@ -24,13 +24,13 @@ app.get('/', function (req, res) {
 
 //using put.io api to add files
 app.get('/add_to_put', function(req, res) {
+      
+      if(req.session.token !== undefined){
+      
       var torrent_options = {
         uri: req.query.q,
         method: 'GET'
       }
-      
-      if(req.session.token !== undefined){
-        
       request(torrent_options, function(error, response, body) {
         if (!error) {
           fs = require('fs')
