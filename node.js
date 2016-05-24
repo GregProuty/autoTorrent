@@ -20,9 +20,9 @@ app.use(cookieSession({
 
 app.get('/', function (req, res) {
   if (req.session.token !== undefined){
-    res.sendFile(path.join('/public/search.html'));
+    res.sendFile(path.join('/search.html'));
   } else {
-    res.sendFile(path.join('/public/index.html'));
+    res.sendFile(path.join('/index.html'));
     //__dirname + 
   }
 });
