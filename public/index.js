@@ -54,6 +54,10 @@ document.getElementById("filename").addEventListener("keydown", function (e) {
     }
 });
 
+function noLogin(){
+  alert("Please log in first");
+}
+
 // function getCookie(name) {
 //     var dc = document.cookie;
 //     var prefix = name + "=";
