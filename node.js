@@ -55,7 +55,8 @@ app.get('/add_to_put', function(req, res) {
                     }
                 });
             } else {
-              res.send(error + "error")
+              // res.send(error + "error")
+              res.send(console.log('log in first'));
             }
            });
            var form = r.form();
