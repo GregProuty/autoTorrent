@@ -69,7 +69,7 @@ app.get('/add_to_put', function(req, res) {
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
       
       } else {
-        alert("Please log in first");
+        window.alert("Please log in first");
       }
 
 
