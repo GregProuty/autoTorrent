@@ -16,7 +16,6 @@ app.use(express.static('public'))
 app.use(cookieSession({
   name: 'session',
   keys: ['key1'],
-  httpOnly: false
 }))
 
 app.get('/', function (req, res) {
@@ -29,6 +28,9 @@ app.get('/add_to_put', function(req, res) {
         uri: req.query.q,
         method: 'GET'
       }
+      
+      if(req.session.token !== undefined){
+        
       request(torrent_options, function(error, response, body) {
         if (!error) {
           fs = require('fs')
@@ -65,6 +67,12 @@ app.get('/add_to_put', function(req, res) {
           res.send (error + "error")
         }
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
+      
+      } else {
+        alert("Please log in first");
+      }
+
+
 });
 
 //put.io api for authentication
