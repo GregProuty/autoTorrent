@@ -24,9 +24,6 @@ app.get('/', function (req, res) {
 
 //using put.io api to add files
 app.get('/add_to_put', function(req, res) {
-      
-      if(req.session.token !== undefined){
-      
       var torrent_options = {
         uri: req.query.q,
         method: 'GET'
@@ -67,11 +64,6 @@ app.get('/add_to_put', function(req, res) {
           res.send (error + "error")
         }
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
-      
-      } else {
-        window.alert("Please log in first");
-      }
-
 
 });
 
