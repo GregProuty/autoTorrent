@@ -18,11 +18,11 @@ app.use(cookieSession({
   keys: ['key1'],
 }))
 
-app.get('/public', function (req, res) {
+app.get('/', function (req, res) {
   if (req.session.token !== undefined){
-    res.sendFile(path.join(__dirname + '/search.html'));
+    res.sendFile(path.join(__dirname + 'public/search.html'));
   } else {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + 'public/index.html'));
   }
 });
 
