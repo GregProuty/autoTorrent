@@ -87,7 +87,7 @@ app.get('/put_oauth', function(req, res) {
         if (!error) {
             console.log(body)
             req.session.token = JSON.parse(body).access_token;
-            res.redirect('/');
+            res.redirect('/public/search.html');
         } else {
             res.send(error + "TEST");
         }
