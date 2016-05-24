@@ -40,51 +40,45 @@ function listTorrents() {
 //"SEARCH" button behavior, calls listTorrents()
 document.getElementById("clickMe").onclick = function(){
   
-  console.log("displaying");
-  protectedDisplay()
-        // listTorrents();
+        listTorrents();
 
 }
 
 //calls listTorrents on keypress enter
 document.getElementById("filename").addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-        
-        console.log("displaying");
-        protectedDisplay()
-        // e.preventDefault();
-        // listTorrents();
-        
+
+        e.preventDefault();
+        listTorrents();
         
     }
 });
 
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-        end = dc.length;
-        }
-    }
-    return unescape(dc.substring(begin + prefix.length, end));
-} 
+// function getCookie(name) {
+//     var dc = document.cookie;
+//     var prefix = name + "=";
+//     var begin = dc.indexOf("; " + prefix);
+//     if (begin == -1) {
+//         begin = dc.indexOf(prefix);
+//         if (begin != 0) return null;
+//     }
+//     else
+//     {
+//         begin += 2;
+//         var end = document.cookie.indexOf(";", begin);
+//         if (end == -1) {
+//         end = dc.length;
+//         }
+//     }
+//     return unescape(dc.substring(begin + prefix.length, end));
+// } 
 
-function protectedDisplay(){
-  var session = getCookie("session"); 
-  if(session === null){
-    alert("Please log in first")
-  } else {
-    e.preventDefault();
-    listTorrents();
-  }
-  
-}
+// function protectedDisplay(){
+//   var session = getCookie("session"); 
+//   if(session === null){
+//     alert("Please log in first")
+//   } else {
+//     e.preventDefault();
+//     listTorrents();
+//   }
+// }
