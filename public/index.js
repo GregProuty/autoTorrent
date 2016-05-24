@@ -7,6 +7,7 @@ document.getElementById("loginButton").onclick = function () {
 
 //lists ten torrent links on the page
 function listTorrents() { 
+  if(error) alert("please log in first");
   params = "q=" + document.getElementById("filename").value;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
