@@ -15,7 +15,8 @@ app.use(express.static('public'))
 //middleware used to save put.io keys in a cookie
 app.use(cookieSession({
   name: 'session',
-  keys: ['key1']
+  keys: ['key1'],
+  httpOnly: false
 }))
 
 app.get('/', function (req, res) {
