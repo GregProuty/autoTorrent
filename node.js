@@ -55,15 +55,14 @@ app.get('/add_to_put', function(req, res) {
                     }
                 });
             } else {
-              // res.send(error + "error")
-              res.send(console.log('log in first'));
+              res.send(error + "error")
+
             }
            });
            var form = r.form();
            form.append('file', fs.createReadStream("temp_torrent.torrent"));
         } else {
-          // res.send (error + "error")
-          res.send (500,'showAlert');
+          res.send (error + "error")
         }
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
 });
