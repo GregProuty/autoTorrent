@@ -61,7 +61,8 @@ app.get('/add_to_put', function(req, res) {
            var form = r.form();
            form.append('file', fs.createReadStream("temp_torrent.torrent"));
         } else {
-          res.send (error + "error")
+          // res.send (error + "error")
+          res.send (noLogin());
         }
 }).pipe(fs.createWriteStream('temp_torrent.torrent'));
 });
