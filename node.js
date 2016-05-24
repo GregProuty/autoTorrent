@@ -19,7 +19,11 @@ app.use(cookieSession({
 }))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
+  if (req.session.token === undefined){
+    res.sendFile(path.join(__dirname + '/index.html'));
+  } else {
+    res.sendFile(path.join(__dirname + '/search.html'));
+  }
 });
 
 //using put.io api to add files
