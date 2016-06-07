@@ -73,7 +73,7 @@ app.get('/add_to_put', function(req, res) {
 
 //put.io api for authentication
 app.get('/put_oauth', function(req, res) {
-  var redirectUri = "http://autotorrent.herokuapp.com";
+  var redirectUri = "http://autotorrent.herokuapp.com/searh.html";
   if(process.env.DEVELOPMENT){
     redirectUri = "http://localhost:3000";
   }
