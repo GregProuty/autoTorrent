@@ -38,19 +38,3 @@ function listTorrents() {
   xmlhttp.send(null); 
 }
 
-//"SEARCH" button behavior, calls listTorrents()
-document.getElementById("clickMe").onclick = function(){
-  
-        listTorrents();
-
-}
-
-//calls listTorrents on keypress enter
-document.getElementById("filename").addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-
-        e.preventDefault();
-        listTorrents();
-        
-    }
-});
