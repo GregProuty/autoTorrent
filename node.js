@@ -19,7 +19,11 @@ app.use(cookieSession({
 }))
 
 app.get('/', function (req, res) {
+  if (req.session.token !== undefined){
     res.sendFile(__dirname + path.join('/search.html'));
+  } else {
+    res.sendFile(__dirname + path.join('/index.html'));
+  }
 });
 
 //using put.io api to add files
@@ -69,7 +73,7 @@ app.get('/add_to_put', function(req, res) {
 
 //put.io api for authentication
 app.get('/put_oauth', function(req, res) {
-  var redirectUri = "http://autotorrent.herokuapp.com/search.html";
+  var redirectUri = "http://autotorrent.herokuapp.com";
   if(process.env.DEVELOPMENT){
     redirectUri = "http://localhost:3000";
   }
