@@ -2,7 +2,7 @@ var request = require('request');
 
 //makes a kickass torrents url to be used below
 function makeKickassUrl(query) {
-    return "https://kat.cr/json.php?q=" + encodeURIComponent(query) + "&field=seeders&order=asc";
+    return "https://kickass.cd/json.php?q=" + encodeURIComponent(query) + "&field=seeders&order=asc";
 }
 
 //formats the JSON list of torrents returned by the kickass api
